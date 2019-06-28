@@ -20,12 +20,15 @@ input=[subbase,'.nii.gz'];
 
 output=[subbase,'.skull.nii.gz'];
 dewisp_mask=[subbase,'.cortex.dewisp.mask.nii.gz'];
+label_vol=[subbase,'.svreg.label.nii.gz'];
+
 %unix(['skullfinder -i ',input,' -o ', output,' -m ', mask]);
 
 v=load_nii_BIG_Lab(output);
 v2=load_nii_BIG_Lab(dewisp_mask);
+v3=load_nii_BIG_Lab(label_vol);
 
-cleanimg=v.img+v2.img;
+cleanimg=v.img+v2.img+v3.img;
 opt.keepratio=0.1; % this option is only useful when vol2mesh uses 'simplify' method
 opt.radbound=3;    % set the target surface mesh element bounding sphere be <3 pixels in radius.
 
