@@ -52,3 +52,5 @@ h=figure;
 plotmesh(node(:,[2 1 3]),face,'y>=70');
 view(0,0);axis equal;axis off;axis tight;
 saveas(h,'brainsuite2.png');
+
+
