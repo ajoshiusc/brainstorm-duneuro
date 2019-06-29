@@ -58,18 +58,11 @@ cleanimg(v1.img==18)=60;
 %cleanimg(v3.img==19)=7;
 
 % fill holes and call the rest air
-
-%cleanimg=double(v.img)+double(v2.img)+double(v3.img);
+% skipped for now
 opt.keepratio=0.1; % this option is only useful when vol2mesh uses 'simplify' method
 opt.radbound=3;    % set the target surface mesh element bounding sphere be <3 pixels in radius.
 
-% cleanimg2=0*cleanimg;
-% lvl=1;
-% nl=unique(cleanimg(:));
-% nl=setdiff(nl,0);
-% for jj=1:length(nl)
-%     cleanimg2(cleanimg==nl(jj))=jj;
-% end
+
 v3.img=cleanimg;
 save_untouch_nii_gz(v3,'out.nii.gz')
 tic
