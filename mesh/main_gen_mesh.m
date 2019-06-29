@@ -80,6 +80,6 @@ toc
 h=figure;
 plotmesh(node(:,[2 1 3]),face,'x<=190');
 view(90,0);axis equal;axis off;axis tight;
-saveas(h,'brainsuite3.png');
+saveas(h,'brainsuite4.png');
 
 
