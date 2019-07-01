@@ -38,11 +38,11 @@ v3=load_nii_BIG_Lab(label_vol);
 cleanimg=10.0*(v2.img>0);
 
 % gm = 2: generate mask from pvc_frac + dewisp mask
-gm=(v3.img>1.1 & v3.img<3) & (v2.img==0);
+gm=(v3.img>1.05 & v3.img<2.8) & (v2.img==0);
 cleanimg(gm>0) = 20.0;
 
 % csf = 3: from pvc frac
-csf = (v3.img<1.1) & (v3.img>0);
+csf = (v3.img<1.05) & (v3.img>0);
 cleanimg(csf>0) = 30.0;
 
 % skull = 4: from skull
@@ -56,7 +56,7 @@ cleanimg(v1.img==18)=60;
 
 % head = 7: from scalp file
 %cleanimg(v3.img==19)=7;
-
+%cleanimg = 100 - cleanimg;
 % fill holes and call the rest air
 % skipped for now
 opt.keepratio=0.1; % this option is only useful when vol2mesh uses 'simplify' method
@@ -71,8 +71,8 @@ toc
 %plotmesh(node(:,[2 1 3]),face,'facealpha',0.7);
 
 h=figure;
-plotmesh(node(:,[2 1 3]),face,'x<=190');
+plotmesh(node(:,[2 1 3]),face,'x<=100');
 view(90,0);axis equal;axis off;axis tight;
-saveas(h,'brainsuite4.png');
+saveas(h,'brainsuite5.png');
 
 
