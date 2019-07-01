@@ -38,11 +38,11 @@ v3=load_nii_BIG_Lab(label_vol);
 cleanimg=10.0*(v2.img>0);
 
 % gm = 2: generate mask from pvc_frac + dewisp mask
-gm=(v3.img>1.05 & v3.img<2.8) & (v2.img==0);
+gm=(v3.img>1.1 & v3.img<2.5) & (v2.img==0);
 cleanimg(gm>0) = 20.0;
 
 % csf = 3: from pvc frac
-csf = (v3.img<1.05) & (v3.img>0);
+csf = (v3.img<1.1) & (v3.img>0);
 cleanimg(csf>0) = 30.0;
 
 % skull = 4: from skull
